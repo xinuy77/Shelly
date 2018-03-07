@@ -1,5 +1,4 @@
 const { spawn } = require('child_process');
-//avar exec = require('native-exec');
 
 var readline = require('readline');
 var log = console.log;
