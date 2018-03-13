@@ -10,7 +10,7 @@ var rl = readline.createInterface({
 function startShell() {
     var arg;
 
-    rl.question('Command: ', function(command) {
+    rl.question('> ', function(command) {
         arg = command.split(' ');
 
         if(arg[0] === 'exit') {
@@ -31,7 +31,7 @@ function startShell() {
             });
 
             child.on('error', function(err) {
-                console.log(err);
+                console.log("Command not found...");
                 startShell();
             });
         }
