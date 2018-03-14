@@ -1,0 +1,26 @@
+{
+  "name": "shelly",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "electron": "^1.8.3",
+    "jquery": "^3.3.1",
+    "node-pty": "^0.7.4",
+    "xterm": "^3.2.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xinuy77/Shelly.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xinuy77/Shelly/issues"
+  },
+  "homepage": "https://github.com/xinuy77/Shelly#readme"
+}

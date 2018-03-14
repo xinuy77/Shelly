@@ -1,0 +1,27 @@
+header {
+    -webkit-app-region: drag; 
+    -webkit-user-select: none; 
+}
+
+body {
+	height: 100%;
+	width:  100%;
+	background-color: red;
+}
+
+#shell {
+	height: 100%;
+	width:  100%;
+}
+
+#window-content {
+	height: 100%;
+	width:  100%;
+	background-color: red;
+}
+
+#window {
+	height: 100%;
+	width:  100%;
+	background-color: red;
+}

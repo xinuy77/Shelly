@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">  
+        <link rel="stylesheet" href="node_modules/xterm/dist/xterm.css" />
+        <link rel="stylesheet" href="photon/css/photon.css" />
+        <link rel="stylesheet" href="style.css" />
+	<script>window.$ = window.jQuery = require('jquery');</script>
+        <title>Shelly</title>
+    </head>
+    <body>
+         <div class="window">
+              <!-- .toolbar-header sits at the top of app -->
+              <header class="toolbar toolbar-header">
+                  <h1 class="title">Shelly</h1>
+              </header>
+
+              <!-- app's content goes inside .window-content -->
+              <div class="window-content">
+                  <div id="shell"></div>
+              </div>
+        </div>
+    </body>
+        <script>require('./index.js')</script>
+</html>
