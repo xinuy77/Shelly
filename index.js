@@ -19,6 +19,8 @@ $(document).ready(function() {
     });
     var autoComplete = new AutoComplete();
 
+    autoComplete.searchCommand('test');
+
     shell.open($('#shell')[0]);
     shell.fit();
 
