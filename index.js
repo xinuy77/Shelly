@@ -1,9 +1,8 @@
-const { spawn }     = require('child_process');
-let { ipcRenderer } = require('electron');
-var pty             = require('node-pty');
-var Terminal        = require('xterm').Terminal;
-var fit             = require('./node_modules/xterm/dist/addons/fit/fit.js');
-//var fullscreen      = require('xterm/lib/addons/fullscreen/fullscreen');
+const { spawn }          = require('child_process');
+var pty                  = require('node-pty');
+var Terminal             = require('xterm').Terminal;
+var fit                  = require('./node_modules/xterm/dist/addons/fit/fit.js');
+window.$ = window.jQuery = require('jquery');
 
 Terminal.applyAddon(fit);
 
@@ -11,7 +10,7 @@ const shell    = new Terminal();
 var   commands = ["Sad", "Happy", "Mad"]; // just a random array for the commands that we'll be implementing and using as the
                                            // database for now 
 
-shell.open(document.getElementById('shell'));
+shell.open($('#shell')[0]);
 
 shell.fit();
 
@@ -33,11 +32,7 @@ shell.on('data', function(data){
 ptyProcess.on('data', function(data) {
     shell.write(data);
 });
-    
-ipcRenderer.on('resize', function (e, x, y) {
-    console.log('resizing');
-});
-
+   
 window.addEventListener('resize', function(e){
     shell.fit();
 });
