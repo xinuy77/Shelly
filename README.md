@@ -13,5 +13,5 @@ $ npm install electron -g
 $ npm install
 
 // start app
-$ electron .
+$ npm start
 ```
