@@ -2,3 +2,33 @@ header {
     -webkit-app-region: drag; 
     -webkit-user-select: none; 
 }
+
+body {
+    height: 100%;
+    width: 100%;
+}
+
+#terminal-container .terminal.xterm {
+    height: 100%;
+    width: 100%;
+}
+
+#terminal-container .xterm-viewport {
+    height: 100% !important;
+    width: 100%;
+}
+
+#shell {
+    height: 100%;
+    width: 100%;
+}
+
+.window {
+    height: 100%;
+    width: 100%;
+}
+
+.window-content {
+    height: 100%;
+    width: 100%;
+}
