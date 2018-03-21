@@ -1,24 +1,32 @@
-<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">  
-        <link rel="stylesheet" href="./assets/xterm.css" />
-        <link rel="stylesheet" href="./assets/photon/css/photon.css" />
-        <link rel="stylesheet" href="./assets/style.css" />
-        <title>Shelly</title>
-    </head>
-    <body>
-         <div class="window">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <title>Shelly</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata"
+          rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="./assets/photon/css/photon.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
+  </head>
+  <body>
+      <div class="window">
               <!-- .toolbar-header sits at the top of app -->
               <header class="toolbar toolbar-header">
                   <h1 class="title">Shelly</h1>
               </header>
 
               <!-- app's content goes inside .window-content -->
+              <div id="shell"></div>
               <div class="window-content">
-                  <div id="shell"></div>
+                  <div id="container">
+                      <output></output>
+                      <div id="input-line" class="input-line">
+                         <div class="prompt"></div>
+                         <div><input class="cmdline" autofocus /></div>
+                      </div>
+                  </div>
               </div>
-        </div>
-    </body>
-        <script>require('./index.js')</script>
+      </div>
+  </body>
+  <script src="./index.js"></script>
 </html>
