@@ -2,8 +2,12 @@
 function Shell() {
 }
 
-Shell.prototype.write = function(command) {
+Shell.prototype.write = function(command, callback) {
     var arg = command.split(' ');
+
+    for(var i = 0; i < arg.length; i++) {
+        arg[i] = arg[i].replace(/\s/g, '');
+    }
 
     if(arg[0] === 'exit') {
       //  return rl.close();   
@@ -13,20 +17,19 @@ Shell.prototype.write = function(command) {
     }
     else {
         var arg_1 = arg.shift();
-        var child = spawn(arg_1, arg, { 
+        var child = spawn(arg_1, arg);
+        
+        child.stdout.on('data', (data) => {
+            callback(data.toString());
         });
-/*
-        child.stdout.on('data', function(data) {
-            console.log(data);
+        child.stderr.on('data', (data) => {
+            callback(data.toString());
         });
-*/
-        child.on('exit', function(e, code) {
-        });
-
         child.on('error', function(err) {
-            console.log("Command not found...");
-            console.log(err);
-            console.log(command);
+            callback("Command not found...");
+        });
+        child.on('close', (code) => {
+            console.log(`child process exited with code ${code}`);
         });
     }
 };

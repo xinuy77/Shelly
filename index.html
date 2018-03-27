@@ -9,24 +9,24 @@
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
-      <div class="window">
-              <!-- .toolbar-header sits at the top of app -->
-              <header class="toolbar toolbar-header">
-                  <h1 class="title">Shelly</h1>
-              </header>
-
-              <!-- app's content goes inside .window-content -->
-              <div id="shell"></div>
-              <div class="window-content">
-                  <div id="container">
-                      <output></output>
-                      <div id="input-line" class="input-line">
-                         <div class="prompt"></div>
-                         <div><input class="cmdline" autofocus /></div>
-                      </div>
-                  </div>
-              </div>
+    <div class="window">
+      <!-- .toolbar-header sits at the top of app -->
+      <header class="toolbar toolbar-header">
+        <h1 class="title">Shelly</h1>
+      </header>
+      <!-- app's content goes inside .window-content -->
+      <div id="shell"></div>
+      <div class="window-content">
+        <div id="container">
+          <output></output>
+          <div id="input-line" class="input-line">
+            <div class="prompt"></div>
+            <div><input class="cmdline" autofocus /></div>
+          </div>
+        </div>
       </div>
+    </div>
   </body>
+  <script src="./utils/control.js"></script>
   <script src="./index.js"></script>
 </html>
