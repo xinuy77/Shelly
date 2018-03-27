@@ -1,4 +1,3 @@
-const { spawn }  = require('child_process');
 var pty          = require('node-pty');
 var AutoComplete = require('./utils/AutoComplete.js');
 var Shell        = require('./utils/Shell.js');              

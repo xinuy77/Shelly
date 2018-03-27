@@ -1,3 +1,5 @@
+var AutoComplete = require('./utils/AutoComplete.js');
+
 var util     = util || {};
 util.toArray = function(list) {
     return Array.prototype.slice.call(list || [], 0);
@@ -9,10 +11,10 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
 
     var cmdLine_ = document.querySelector(cmdLineContainer);
     var output_  = document.querySelector(outputContainer);
+    
+    var autoComplete = new AutoComplete();
 
-    const CMDS_  = [
-        'cat', 'clear', 'clock', 'date', 'echo', 'help', 'uname', 'whoami'
-    ];
+    const CMDS_  = []; //for original commands
 
     var fs_       = null;
     var cwd_      = null;
@@ -27,6 +29,8 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
     cmdLine_.addEventListener('click', inputTextClick_, false);
     cmdLine_.addEventListener('keydown', historyHandler_, false);
     cmdLine_.addEventListener('keydown', processNewCommand_, false);
+   
+  //$(cmdLineContainer).on('input', function);
 
     //
     function inputTextClick_(e) {
