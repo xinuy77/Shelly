@@ -14,7 +14,13 @@ Shell.prototype.write = function(command, callback) {
       //  return rl.close();   
     } 
     else if(arg[0] === 'cd') {
-        process.chdir(arg[1]);
+        try {
+            process.chdir(arg[1]);
+            callback("Changed Directory");
+        }
+        catch (err) {
+            callback("No Directory Found");
+        }
     }
     else {
         var arg_1 = arg.shift();
@@ -31,6 +37,7 @@ Shell.prototype.write = function(command, callback) {
         });
         child.on('close', (code) => {
             console.log(`child process exited with code ${code}`);
+            callback("\n");
         });
     }
 };
