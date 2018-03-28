@@ -17,12 +17,10 @@ function getCommand(command, CALLBACK) {
 
     ptyProcess.on('data', function(data) {
         data = data.split(/\r?\n/);
-
+        
         data.shift();
-        console.log(data);
         data.pop();
 
-        console.log(data);
         if(data.length != 0) {
             if(data.length === 0) {
                 CALLBACK([]);
