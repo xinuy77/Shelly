@@ -6,6 +6,7 @@
     <link href="https://fonts.googleapis.com/css?family=Inconsolata"
           rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="./assets/photon/css/photon.css" />
+    <link rel="stylesheet" href="./assets/jquery-ui.css" />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
@@ -18,15 +19,18 @@
       <div id="shell"></div>
       <div class="window-content">
         <div id="container">
-          <output></output>
           <div id="input-line" class="input-line">
             <div class="prompt"></div>
             <div><input class="cmdline" autofocus /></div>
+          </div>
+          <div id="output-container">
+            <output></output>
           </div>
         </div>
       </div>
     </div>
   </body>
-  <script src="./utils/terminal_control.js"></script>
   <script src="./index.js"></script>
+  <script src="./utils/terminal_control.js"></script>
+  <script src="./utils/jquery-ui.js"></script>
 </html>

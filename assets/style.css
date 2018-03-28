@@ -17,21 +17,57 @@ body {
   display:true;
 }
 
+body .ui-autocomplete {
+  /* font-family to all */
+    background: black;
+    color: white;
+}
+
+body .ui-autocomplete .ui-menu-item .ui-corner-all {
+   /* all <a> */
+    background: black;
+}
+
+body .ui-autocomplete .ui-menu-item .ui-state-focus {
+   /* selected <a> */
+    background: black;
+}
+
+#output-container {
+  clear: both;
+  height:90%;
+  width:100%;
+  overflow:auto;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+width: 12px;
+height: 12px;
+}
+
+::-webkit-scrollbar-track {
+border: 1px solid yellowgreen;
+border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+background: yellowgreen;
+border-radius: 10px;
+}
+
 .window-content {
+  width: 100%;
   background-color: black;
 }
-#container {
-  padding: .1em 1.5em 1em 1em;
-}
-#container output {
-  clear: both;
+
+.window {
   width: 100%;
 }
-#container output h3 {
-  margin: 0;
-}
-#container output pre {
-  margin: 0;
+
+#container {
+  width: 100%;
+  padding: .1em 1.5em 1em 1em;
 }
 .input-line {
   display: -webkit-box;

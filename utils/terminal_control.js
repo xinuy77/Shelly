@@ -29,8 +29,8 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
     cmdLine_.addEventListener('click', inputTextClick_, false);
     cmdLine_.addEventListener('keydown', historyHandler_, false);
     cmdLine_.addEventListener('keydown', processNewCommand_, false);
-   
-  //$(cmdLineContainer).on('input', function);
+   // autoComplete.fillDropDown();
+    $(cmdLineContainer).on('input', ()=>{autoComplete.fillDropDown($(cmdLineContainer).val())});
 
     //
     function inputTextClick_(e) {
@@ -80,33 +80,17 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
                 histpos_ = history_.length;
             }
             
-            // Duplicate current input and append to output section.
-            var line;
-            var input;
+            var line = document.createElement("HR"); 
 
-            line = this.parentNode.parentNode.cloneNode(true);
-            line.removeAttribute('id')
-            line.classList.add('line');
-            
-            input = line.querySelector('input.cmdline');
-            input.autofocus = false;
-            input.readOnly = true;
-            
             output_.appendChild(line);
+
             shell.write(this.value, (data)=>{
                 output(data);
-                //window.scrollTo(0, getDocHeight_());
-                $('.window-content').scrollTop($('.window-content')[0].scrollHeight);
-                //goBottom();
+               output_.appendChild(line);
+                $('#output-container').scrollTop($('#output-container')[0].scrollHeight);
                 this.value = ''; // Clear/setup line for next input.
             });
         }
-    }
-
-    function goBottom() {
-        var documentHeight=document.documentElement.offsetHeight;
-        var viewportHeight=window.innerHeight;
-        window.scrollTo(0,documentHeight-viewportHeight);
     }
 
     function formatColumns_(entries) {
