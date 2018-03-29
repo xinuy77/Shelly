@@ -1,3 +1,4 @@
+const {StringDecoder} = require('string_decoder');
 var pty = require('node-pty');
 var commandList = [];
 var sentCommand = false;
@@ -13,9 +14,13 @@ function AutoComplete() {
 }
 
 function getCommand(command, CALLBACK) {
+    const decoder = new StringDecoder('utf8');
     var commandQuery = "compgen -c " + command + "\r"; //get key input
 
     ptyProcess.on('data', function(data) {
+
+        //process.stdout.write(decoder.write(data));
+
         data = data.split(/\r?\n/);
         
         data.shift();

@@ -85,8 +85,13 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
             output_.appendChild(line);
 
             shell.write(this.value, (data)=>{
-                output(data);
-               output_.appendChild(line);
+               if(data === "CLEAR") {
+                   $(outputContainer).val("");
+               }
+               else {
+                   output(data);
+                   output_.appendChild(line);
+               }
                 $('#output-container').scrollTop($('#output-container')[0].scrollHeight);
                 this.value = ''; // Clear/setup line for next input.
             });
@@ -127,7 +132,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
 
     return {
         init: function() {
-            output('<h2 style="letter-spacing: 4px">Shelly</h2><p>' + new Date() + '</p><p>Improved Shell Terminal</p>');
+            output('<h2 style="letter-spacing: 4px">Shelly</h2></p><p>Improved UI Shell Terminal</p><p>' + new Date() + '</p>');
         },
         output: output
     }

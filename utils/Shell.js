@@ -1,4 +1,6 @@
 const { spawn } = require('child_process');
+const { exec } = require('child_process');
+const { execSync } = require('child_process');
 
 function Shell() {
 }
@@ -16,7 +18,13 @@ Shell.prototype.write = function(command, callback) {
 
     if(arg_1 === 'exit') {
         window.close();
-    } 
+    }
+    else if(command.length === 0) {
+        callback("Please Enter Command");
+    }
+    else if(arg_1 === 'clear') {
+        callback("CLEAR");
+    }
     else if(arg_1 === 'cd') {
         try {
             process.chdir(arg[0]);
@@ -26,7 +34,7 @@ Shell.prototype.write = function(command, callback) {
             callback("No Directory Found");
         }
     }
-    else if(arg_1 === 'vim' || (arg_1 === 'git' && arg[0] === 'push')) {
+    else if(arg_1 === 'vim' || (arg_1 === 'git' && (arg[0] === 'push' || arg[0] === 'pull'))) {
         var option = ["-x", arg_1];
 
         if(arg_1 == 'vim') {
@@ -35,14 +43,17 @@ Shell.prototype.write = function(command, callback) {
         }
 
         child = spawn("gnome-terminal", option.concat(arg));
+        callback("Command Complete");
     }
     else {
-        child = spawn(arg_1, arg);
+        //child = spawn(arg_1, arg);
+        child = exec(command);
+
         child.stdout.on('data', (data) => {
-            callback(data.toString());
+            callback(data.toString().replace(/\n/g, "<br />"));
         });
         child.stderr.on('data', (data) => {
-            callback(data.toString());
+            callback(data.toString().replace(/\n/g, "<br />"));
         });
         child.on('error', function(err) {
             callback("Command Not Found");

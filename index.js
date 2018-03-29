@@ -8,6 +8,7 @@ var shell        = new Shell();
 var autoComplete = new AutoComplete();
 
 $(document).ready(function() {
+    $('#close-btn').click(()=>{window.close()});
     $('.prompt').html('>');
     var terminal = new Terminal('#input-line .cmdline', '#container output', shell);
     terminal.init();
