@@ -1,15 +1,31 @@
-var pty          = require('node-pty');
-var AutoComplete = require('./utils/AutoComplete.js');
-var Shell        = require('./utils/Shell.js');              
+const searchInPage       = require('electron-in-page-search').default;
+const remote             = require('electron').remote;
+var pty                  = require('node-pty');
+var AutoComplete         = require('./utils/AutoComplete.js');
+var Shell                = require('./utils/Shell.js');              
 
 window.$ = window.jQuery = require('jquery');
+
 
 var shell        = new Shell();
 var autoComplete = new AutoComplete();
 
+
 $(document).ready(function() {
     $('#close-btn').click(()=>{window.close()});
-    $('.prompt').html('>');
-    var terminal = new Terminal('#input-line .cmdline', '#container output', shell);
+    
+    const terminal = new Terminal('#input-line .cmdline', '#container output', shell);
+    
     terminal.init();
+    $('.prompt').html('>');
+
+    const search = searchInPage(remote.getCurrentWebContents());
+        $('#search-page-button').click(()=>{
+    });
+    
+    $(window).keydown(function(e){
+        if ((e.ctrlKey || e.metaKey) && e.keyCode === 70) {
+    	    search.openSearchWindow();
+        }
+    });
 });

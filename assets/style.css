@@ -20,6 +20,32 @@ body {
   background-color: black;
 }
 
+.search-box {
+  display: none;
+}
+
+.state-visible {
+  display: block;
+}
+
+.electron-in-page-search-window {
+  width: 300px;
+  height: 36px;
+  background-color: white;
+  position: fixed;
+  z-index: 999;
+   bottom:0;
+     right:0;
+}
+
+.electron-in-page-search-window.search-inactive {
+  visibility: hidden;
+}
+
+.electron-in-page-search-window.search-active {
+  visibility: visible;
+}
+
 #title-bar-btns {
   -webkit-app-region: no-drag;
   position: fixed;
