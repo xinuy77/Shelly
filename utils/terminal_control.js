@@ -1,4 +1,5 @@
-var AutoComplete = require('./utils/AutoComplete.js');
+var AutoComplete  = require('./utils/AutoComplete.js');
+var DirNavigation = require('./utils/DirNavigation.js');
 
 var util     = util || {};
 util.toArray = function(list) {
@@ -9,10 +10,10 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
     window.URL               = window.URL || window.webkitURL;
     window.requestFileSystem = window.requestFileSystem || window.webkitRequestFileSystem;
 
-    var cmdLine_ = document.querySelector(cmdLineContainer);
-    var output_  = document.querySelector(outputContainer);
-    
+    var cmdLine_     = document.querySelector(cmdLineContainer);
+    var output_      = document.querySelector(outputContainer);
     var autoComplete = new AutoComplete();
+    var dirNav       = new DirNavigation($(".nav-group"), $(".nav-group-title"), $("#title-bar-btns"), shell);
 
     const CMDS_  = []; //for original commands
 
@@ -29,15 +30,13 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
     cmdLine_.addEventListener('click', inputTextClick_, false);
     cmdLine_.addEventListener('keydown', historyHandler_, false);
     cmdLine_.addEventListener('keydown', processNewCommand_, false);
-   // autoComplete.fillDropDown();
+    
     $(cmdLineContainer).on('input', ()=>{autoComplete.fillDropDown($(cmdLineContainer).val())});
 
-    //
     function inputTextClick_(e) {
         this.value = this.value;
     }
 
-    //
     function historyHandler_(e) {
         if (history_.length) {
             if (e.keyCode == 38 || e.keyCode == 40) {
@@ -85,6 +84,9 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
             output_.appendChild(line);
 
             shell.write(this.value, (data)=>{
+               if(data === "Changed Directory") {
+                   dirNav.refresh();        
+               }
                if(data === "CLEAR") {
                    $(outputContainer).val("");
                }
@@ -92,8 +94,8 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
                    output(data);
                    output_.appendChild(line);
                }
-                $('#output-container').scrollTop($('#output-container')[0].scrollHeight);
-                this.value = ''; // Clear/setup line for next input.
+               $('#output-container').scrollTop($('#output-container')[0].scrollHeight);
+               this.value = ''; // Clear/setup line for next input.
             });
         }
     }
@@ -132,7 +134,7 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer, shell) {
 
     return {
         init: function() {
-            output('<h2 style="letter-spacing: 4px">Shelly</h2></p><p>Improved UI Shell Terminal</p><p>' + new Date() + '</p>');
+            output('<h2 style="letter-spacing: 4px">Shelly</h2></p><p>Improved UI Shell Terminal</p><p>' + new Date() + '</p><hr>');
         },
         output: output
     }

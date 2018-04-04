@@ -1,15 +1,11 @@
-const searchInPage       = require('electron-in-page-search').default;
-const remote             = require('electron').remote;
-var pty                  = require('node-pty');
-var AutoComplete         = require('./utils/AutoComplete.js');
-var Shell                = require('./utils/Shell.js');              
+const searchInPage  = require('electron-in-page-search').default;
+const remote        = require('electron').remote;
+var pty             = require('node-pty');
+var Shell           = require('./utils/Shell.js');              
 
-window.$ = window.jQuery = require('jquery');
+window.$  = window.jQuery = require('jquery');
 
-
-var shell        = new Shell();
-var autoComplete = new AutoComplete();
-
+var shell = new Shell();
 
 $(document).ready(function() {
     $('#close-btn').click(()=>{window.close()});

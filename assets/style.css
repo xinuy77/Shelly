@@ -20,6 +20,16 @@ body {
   background-color: black;
 }
 
+nav {
+  background-color: white;
+  width: 20%;
+  overflow-y: auto;
+}
+
+.nav-group .btn {
+    width: 100%;
+}
+
 .search-box {
   display: none;
 }
@@ -28,14 +38,20 @@ body {
   display: block;
 }
 
+#HideBtn {
+  position: fixed;
+  left: 0px;
+  width: 16.5%;
+}
+
 .electron-in-page-search-window {
   width: 300px;
   height: 36px;
   background-color: white;
   position: fixed;
   z-index: 999;
-   bottom:0;
-     right:0;
+  bottom:0;
+  right:0;
 }
 
 .electron-in-page-search-window.search-inactive {
@@ -44,6 +60,14 @@ body {
 
 .electron-in-page-search-window.search-active {
   visibility: visible;
+}
+
+#directory-container {
+  background-color: green;
+  height:20%;
+  width:20%;
+  float:right;
+  position:relative;
 }
 
 #title-bar-btns {
@@ -75,6 +99,12 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   clear: both;
   height:90%;
   width:100%;
+  float:left;
+  position: relative;
+  overflow-x: auto;
+}
+
+#od-wrapper {
   overflow:auto;
 }
 
