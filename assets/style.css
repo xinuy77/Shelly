@@ -24,6 +24,7 @@ nav {
   background-color: white;
   width: 20%;
   overflow-y: auto;
+  pointer-events: none;
 }
 
 .nav-group .btn {

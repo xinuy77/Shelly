@@ -1,4 +1,5 @@
 const {StringDecoder} = require('string_decoder');
+
 var pty = require('node-pty');
 var commandList = [];
 var sentCommand = false;

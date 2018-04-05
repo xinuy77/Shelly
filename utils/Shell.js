@@ -1,11 +1,14 @@
 const { spawn } = require('child_process');
 const { exec }  = require('child_process');
 
-function Shell() {
+var nativeCmds;
+
+function Shell(nativeCommands) {
+    nativeCmds = nativeCommands;
 }
 
 Shell.prototype.write = function(command, callback) {
-    var arg = command.split(' ');
+    var arg      = command.split(' ');
     var child;
     var arg_1;
 
@@ -14,6 +17,22 @@ Shell.prototype.write = function(command, callback) {
     }
 
     arg_1 = arg.shift();
+
+    for(var i = 0; i < nativeCmds.length; i++) {
+        if(arg_1 === "regcmd") {
+            if(arg[0] === nativeCmds[i]) {
+                callback("This Command is already registered.");
+                return;
+            }
+        }
+        if(nativeCmds[i] === arg_1) {
+            var option = ["-x", arg_1];
+
+            child = spawn("gnome-terminal", option.concat(arg));
+            callback("Command Complete");
+            return;
+        }
+    }
 
     if(arg_1 === 'exit') {
         window.close();
@@ -33,19 +52,11 @@ Shell.prototype.write = function(command, callback) {
             callback("No Directory Found");
         }
     }
-    else if(arg_1 === 'vim' || (arg_1 === 'git' && (arg[0] === 'push' || arg[0] === 'pull'))) {
-        var option = ["-x", arg_1];
-
-        if(arg_1 == 'vim') {
-            arg.push("&&");
-            arg.push("exit");
-        }
-
-        child = spawn("gnome-terminal", option.concat(arg));
-        callback("Command Complete");
+    else if (arg_1 === 'regcmd') {
+        nativeCmds.push(arg[0]);
+        callback(nativeCmds);
     }
     else {
-        //child = spawn(arg_1, arg);
         child = exec(command);
 
         child.stdout.on('data', (data) => {
