@@ -1,3 +1,4 @@
+
 var AutoComplete  = require('./utils/AutoComplete.js');
 var DirNavigation = require('./utils/DirNavigation.js');
 var nativeCmds    = require('./config/nativeCommands.json');
@@ -6,6 +7,7 @@ var fs            = require('fs');
 var os            = require('os');
 var storage       = require('electron-json-storage');
 var util          = util || {};
+
 util.toArray = function(list) {
     return Array.prototype.slice.call(list || [], 0);
 };
@@ -51,6 +53,17 @@ var Terminal = Terminal || function(cmdLineContainer, outputContainer) {
     cmdLine_.addEventListener('keydown', processNewCommand_, false);
     
     $(cmdLineContainer).on('input', ()=>{autoComplete.fillDropDown($(cmdLineContainer).val())});
+    
+    document.ondragover = document.ondrop = (ev) => {
+        ev.preventDefault();
+    }; 
+
+    document.body.ondrop = (event) => {
+        var path = event.dataTransfer.files[0].path;
+        var cmd  = "vim " + path;
+        shell.write(cmd, ()=>{/**/});
+        event.preventDefault();
+    };
 
     function inputTextClick_(e) {
         this.value = this.value;
