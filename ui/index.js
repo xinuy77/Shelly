@@ -1,4 +1,3 @@
-const { ipcRenderer }  = require('electron');
 const searchInPage = require('electron-in-page-search').default;
 const remote       = require('electron').remote;
 
