@@ -45,11 +45,6 @@ nav {
   width: 16.5%;
 }
 
-#time {
-  position: fixed;
-  left: 18%;
-}
-
 .electron-in-page-search-window {
   width: 300px;
   height: 36px;
@@ -108,6 +103,7 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   float:left;
   position: relative;
   overflow-x: auto;
+  overflow-y: scroll;
 }
 
 #od-wrapper {
@@ -141,7 +137,7 @@ border-radius: 10px;
 
 #container {
   width: 100%;
-  padding: .1em 1.5em 1em 1em;
+  padding: .1em 0.1em 0em 1em;
 }
 .input-line {
   display: -webkit-box;
