@@ -45,6 +45,11 @@ nav {
   width: 16.5%;
 }
 
+#time {
+  position: fixed;
+  left: 18%;
+}
+
 .electron-in-page-search-window {
   width: 300px;
   height: 36px;
