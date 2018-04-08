@@ -18,3 +18,11 @@ $ npm install
 // start app
 $ npm start
 ```
+
+## How to Build
+
+```
+// builds in ./release-builds 
+$ npm run build
+
+```
