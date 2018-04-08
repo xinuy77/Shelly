@@ -96,6 +96,11 @@ body .ui-autocomplete .ui-menu-item .ui-state-focus {
   background: black;
 }
 
+#time {
+  position: fixed;
+  left: 18%;
+}
+
 #output-container {
   clear: both;
   height:90%;
