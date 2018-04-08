@@ -8,7 +8,8 @@
 ```
 // install electron global
 $ npm install electron -g
-
+// or if the usage above doesn't work try 
+$ sudo npm install -g electron --unsafe-perm=true --allow-root
 // install dependencies
 $ npm install
 
