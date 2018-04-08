@@ -15,9 +15,9 @@ function updateTime(){
         } 
         var t_str = hours + ":" + minutes + ":" + seconds + " ";
         if(hours > 11){
-            t_str += "PM";
-        } else {
             t_str += "AM";
+        } else {
+            t_str += "PM";
         }   
     document.getElementById('time').innerHTML = t_str;
 }   
