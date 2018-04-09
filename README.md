@@ -1,7 +1,8 @@
 # Shelly
 
-- Comp3000 Project Carleton University Winter Term 2018  
+- 3000 Project CU Winter 2018  
 - Node.js (v 8.0.0) required
+- Tested using Linux (Ubuntu 16.04 & Fedora 27)
 
 ## Usage
 
