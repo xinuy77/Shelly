@@ -1,7 +1,5 @@
 # Shelly
 
-![Shelly](screenshot/ss1.png)
-
 - 3000 Project CU Winter 2018  
 - Node.js (v 8.0.0) required
 - Tested using Linux (Ubuntu 16.04 & Fedora 27)
@@ -29,3 +27,7 @@ $ npm start
 $ npm run build
 
 ```
+
+## Screenshot
+
+![ss1](screenshot/ss1.png)
